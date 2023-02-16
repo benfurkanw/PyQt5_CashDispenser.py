@@ -9,7 +9,7 @@ class CashDispenser:
         time.sleep(1)
 
     def Login(self):
-        print("Merhaba")
+        print("Merhaba dünya!")
 
     def Register(self):
         self.Name = input("Adınızı giriniz: ")
