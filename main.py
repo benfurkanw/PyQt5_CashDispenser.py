@@ -10,7 +10,7 @@ class CashDispenser:
         time.sleep(1)
 
     def Login(self):
-        print("Hello World!")
+        pass
 
     def Register(self):
         # Prompt the user to enter their information
@@ -22,21 +22,21 @@ class CashDispenser:
         self.Completed = input("Press '0' to go back or any other key to confirm your information: ")
 
         # Store the user's information in a dictionary
-        registered_people_dict = {
-            "name":self.name,
-            "password":self.password,
-            "email":self.email
-        }
-
-        # Open the file and read its contents as a string
         with open('registered_people.json', 'r+', encoding='utf-8') as f:
-            data = f.read()
             # If the file is empty, create a new list
+            data = f.read()
             if len(data) == 0:
                 registered_people_list = []
             else:
                 # Convert the JSON string to a Python list
                 registered_people_list = json.loads(data)
+                
+        registered_people_dict = {
+            "id": len(registered_people_list) + 3151,
+            "name":self.name,
+            "password":self.password,
+            "email":self.email
+        }
 
         # Add the new record to the list
         registered_people_list.append(registered_people_dict)
