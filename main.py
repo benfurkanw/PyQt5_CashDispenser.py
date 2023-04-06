@@ -3,14 +3,14 @@ import json
 
 class CashDispenser:
     def __init__(self):
-        pass
+        self.loggedIn = True
+        self.accountIn = True
 
     def Welcome(self):
         print("Welcome")
         time.sleep(1)
 
     def Login(self):
-        # user = input("Please enter your user id: ")
         id = input("ID'nizi girin: ")
         password = input("Şifrenizi girin: ")
         with open('registered_people.json', 'r', encoding='utf-8') as f:
@@ -19,11 +19,14 @@ class CashDispenser:
         for user in data:
             if str(user["id"]) == id and user["password"] == password:
                 print(f"Giriş başarılı. Hoş geldiniz {user['name']}!")
-                return
+                self.userAccount = user
+                self.loggedIn = True
+                self.accountIn = True
+                self.account()
             
-
-        print("Giriş başarısız. Lütfen ID ve şifrenizi kontrol edin.")
-        self.Login()
+        if self.loggedIn == False:
+            print("Giriş başarısız. Lütfen ID ve şifrenizi kontrol edin.")
+            self.Login()
             
 
     def Register(self):
@@ -49,7 +52,8 @@ class CashDispenser:
             "id": len(registered_people_list) + 3151,
             "name":self.name,
             "password":self.password,
-            "email":self.email
+            "email":self.email,
+            "Balance":5000
         }
 
         # Add the new record to the list
@@ -59,13 +63,29 @@ class CashDispenser:
         with open('registered_people.json', 'w', encoding='utf-8') as f:
             json.dump(registered_people_list, f, ensure_ascii=False, indent=4)
 
-    def While(self):
+
+    def account(self):
+        while self.accountIn == True:
+            self.answer2 = input("Please choose an action:\n-Balance inquiry -> 1\n-Balance withdrawal -> 2\n-Exit -> 3\nYour choice: ")
+            if self.answer2 == "1":
+                print(self.userAccount['name'] + " adlı hesabınızın bakiyesi: " + str(self.userAccount['Balance']) + " Türk Lirası")
+            elif self.answer2 == "2":
+                self.answer4 = input("Please choose an action:\n-Balance withdrawal -> 1\n-Press any number to exit: ")
+                if self.answer4 == "1":
+                    pass
+                else:
+                    self.account()
+            elif self.answer2 == "3":
+                self.accountIn = False
+
+
+    def MainWhile(self):
         while True:
             # Prompt the user to select an action
-            self.answer = input("Please choose an action:\nLogin -> 1\nRegister -> 2\nExit -> 3\nYour choice: ")
+            self.answer = input("Please choose an action:\n-Login -> 1\n-Register -> 2\n-Exit -> 3\nYour choice: ")
             if self.answer == "1":
                     self.Login()
-            
+
             elif self.answer == "2":
                 while True:
                     self.Register()
@@ -95,6 +115,6 @@ class CashDispenser:
 def Work():
     Work = CashDispenser()
     Work.Welcome()
-    Work.While()
+    Work.MainWhile()
 
 Work()

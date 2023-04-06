@@ -1,32 +1,16 @@
 [
     {
         "id": 3151,
-        "name": "Furkan Demir",
-        "password": "12345",
-        "email": "furkandemir@gmail.com"
+        "name": "Furkan",
+        "password": "123",
+        "email": "furkan@gmail.com",
+        "Balance": 5000
     },
     {
         "id": 3152,
-        "name": "Batuhan Akçan ",
-        "password": "54321",
-        "email": "batuhanakcan@gmail.com"
-    },
-    {
-        "id": 3153,
-        "name": "Sefa Serin",
-        "password": "0000",
-        "email": "sefaserin@gmail.com"
-    },
-    {
-        "id": 3154,
-        "name": "Patates",
-        "password": "123",
-        "email": "patates@gmail.com"
-    },
-    {
-        "id": 3155,
-        "name": "Bilgi Demir",
-        "password": "123",
-        "email": "bilgidemir@gmail.com"
+        "name": "Batuhan",
+        "password": "321",
+        "email": "batuhan@gmail.com",
+        "Balance": 5000
     }
 ]
